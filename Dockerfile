@@ -22,7 +22,11 @@ RUN cd /build/rust/ && \
     I686_UNKNOWN_HAIKU_OPENSSL_INCLUDE_DIR=/system/develop/headers/ \
     X86_64_UNKNOWN_HAIKU_OPENSSL_LIB_DIR=/system/develop/lib/ \
     X86_64_UNKNOWN_HAIKU_OPENSSL_INCLUDE_DIR=/system/develop/headers/ \
-    ./x.py -j 8 ${RUST_XPY_COMMAND} && \
-    cd / && mkdir /output/ && mv /build/rust/build/dist/* /output/
+    ./x.py -j 8 ${RUST_XPY_COMMAND}
 
-WORKDIR /output
+RUN curl https://sh.rustup.rs -sSf | sh -s -- -y --profile minimal \
+    && . "$HOME/.cargo/env" \
+    && rustup toolchain link haiku-cross /build/rust/build/x86_64-unknown-linux-gnu/stage1 \
+    && rustup default haiku-cross
+
+WORKDIR /build/

@@ -29,9 +29,19 @@ podman build --build-arg HAIKU_CROSS_COMPILER_TAG=x86_gcc2h-r1beta4 \
     --build-arg RUST_XPY_CONFIG=configs/config-stable-x86.toml .
 ```
 
-## Output
+## Artifacts
 
-When running a `dist` build (meaning `RUST_XPY_COMMAND` is set to dist), all the packages will be
-moved to `/output`.
+All build artifacts are kept in `/build/rust`. If you pass the parameter `dist` to
+`RUST_XPY_COMMAND`, then the packages can be found in `/build/rust/build/dist`.
 
-The intermediate build artifacts are kept in `/build/rust`.
+## Using the Rust Cross-Compiler
+
+If building rustc for Haiku is successful, then the image will be set up to allow you to use the
+generated cross-compiler. You can use cargo's `--target` parameter to compile for the Haiku target
+that matches the platform the image is built for.
+
+For example:
+
+```bash
+cargo build --target x86_64-unknown-haiku
+```
