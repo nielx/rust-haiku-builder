@@ -14,7 +14,7 @@ extended = true
 prefix = "/boot/system"
 
 [rust]
-channel = "stable"
+channel = "beta"
 lld = true
 rpath = false
 deny-warnings = false
