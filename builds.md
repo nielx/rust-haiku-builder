@@ -50,7 +50,42 @@ podman build --build-arg HAIKU_CROSS_COMPILER_TAG=x86_64-r1beta4 \
     --tag rust-haiku-x86_64:1.73.0 .
 ```
 
+
+# 1.76.0 for x86
+```bash
+podman build --build-arg HAIKU_CROSS_COMPILER_TAG=x86_gcc2h-r1beta4 \
+    --build-arg RUST_REV=1.76.0 \
+    --build-arg RUST_REPO=https://github.com/rust-lang/rust \
+    --build-arg HAIKUPORTS_URL=https://eu.hpkg.haiku-os.org/haikuports/master/x86_gcc2/current/ \
+    --build-arg INSTALL_PACKAGES="openssl_x86 openssl_x86_devel nghttp2_x86 nghttp2_x86_devel" \
+    --build-arg SOURCE_FIXUP_SCRIPT=patches/fix-1.76.0.sh \
+    --build-arg RUST_XPY_COMMAND=dist \
+    --build-arg RUST_XPY_CONFIG=configs/config-stable-x86.toml \
+    --tag rust-haiku-x86_gcc2h:1.76.0 .
+```
+
+# 1.76.0 for x86_64
+```bash
+podman build --build-arg HAIKU_CROSS_COMPILER_TAG=x86_64-r1beta4 \
+    --build-arg RUST_REV=1.76.0 \
+    --build-arg RUST_REPO=https://github.com/rust-lang/rust \
+    --build-arg HAIKUPORTS_URL=https://eu.hpkg.haiku-os.org/haikuports/master/x86_64/current/ \
+    --build-arg INSTALL_PACKAGES="openssl openssl_devel nghttp2 nghttp2_devel" \
+    --build-arg SOURCE_FIXUP_SCRIPT=patches/fix-1.76.0.sh \
+    --build-arg RUST_XPY_COMMAND=dist \
+    --build-arg RUST_XPY_CONFIG=configs/config-stable-x86_64.toml \
+    --tag rust-haiku-x86_64:1.76.0 .
+```
+
 # Nightly
 ```bash
-podman build --build-arg HAIKU_CROSS_COMPILER_TAG=x86_64-r1beta4 --build-arg RUST_REV=master --build-arg RUST_REPO=https://github.com/rust-lang/rust  --build-arg HAIKUPORTS_URL=https://eu.hpkg.haiku-os.org/haikuports/master/x86_64/current/ --build-arg INSTALL_PACKAGES="openssl openssl_devel curl curl_devel nghttp2 nghttp2_devel libssh2 libssh2_devel" --build-arg SOURCE_FIXUP_SCRIPT=patches/fix-nightly.sh --build-arg RUST_XPY_COMMAND=build --build-arg RUST_XPY_CONFIG=configs/config-stable-x86_64.toml --tag rust-haiku-x86_64:1.69.0 .
+podman build --build-arg HAIKU_CROSS_COMPILER_TAG=x86_64-r1beta4 \
+    --build-arg RUST_REV=master \
+    --build-arg RUST_REPO=https://github.com/rust-lang/rust \
+    --build-arg HAIKUPORTS_URL=https://eu.hpkg.haiku-os.org/haikuports/master/x86_64/current/ \
+    --build-arg INSTALL_PACKAGES="openssl openssl_devel nghttp2 nghttp2_devel" \
+    --build-arg SOURCE_FIXUP_SCRIPT=patches/fix-nightly.sh \
+    --build-arg RUST_XPY_COMMAND=build \
+    --build-arg RUST_XPY_CONFIG=configs/config-nightly-x86_64.toml \
+    --tag rust-haiku-x86_64:nightly .
 ```
