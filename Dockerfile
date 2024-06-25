@@ -9,6 +9,9 @@ ARG SOURCE_FIXUP_SCRIPT=patches/noop.sh
 ARG RUST_XPY_COMMAND=build
 ARG RUST_XPY_CONFIG=configs/config-nightly-x86_64.toml
 
+# Required for [compiler-builtins](https://crates.io/crates/compiler_builtins) for wasm32-unknown-unknown (Rust 1.79.0)
+RUN apt-get update && apt-get install -y --no-install-recommends clang
+
 COPY tools/pkgman.py /pkgman.py
 
 RUN python3 pkgman.py add-repo ${HAIKUPORTS_URL} && \
