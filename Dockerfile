@@ -1,5 +1,5 @@
-ARG HAIKU_CROSS_COMPILER_TAG=x86_64-r1beta4
-FROM docker.io/haiku/cross-compiler:${HAIKU_CROSS_COMPILER_TAG}
+ARG HAIKU_CROSS_COMPILER_TAG=x86_64-r1beta5
+FROM ghcr.io/haiku/cross-compiler:${HAIKU_CROSS_COMPILER_TAG}
 
 ARG RUST_REV=haiku-nightly
 ARG RUST_REPO=https://github.com/nielx/rust

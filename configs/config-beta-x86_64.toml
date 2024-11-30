@@ -26,5 +26,4 @@ ar = "x86_64-unknown-haiku-ar"
 linker = "x86_64-unknown-haiku-gcc"
 
 [dist]
-missing-tools = true
 compression-formats = ["xz"]

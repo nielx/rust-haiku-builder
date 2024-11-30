@@ -24,5 +24,4 @@ ar = "i586-pc-haiku-ar-x86"
 linker = "i586-pc-haiku-gcc-x86"
 
 [dist]
-missing-tools = true
 compression-formats = ["xz"]
