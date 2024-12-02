@@ -1,0 +1,31 @@
+# Rust 1.83.0+
+change-id = 131075
+
+[llvm]
+targets = "WebAssembly;X86"
+experimental-targets = ""
+static-libstdcpp = false
+download-ci-llvm = false
+
+[build]
+host = ["i686-unknown-haiku"]
+target = ["i686-unknown-haiku", "wasm32-unknown-unknown"]
+extended = true
+
+[install]
+prefix = "/boot/system"
+
+[rust]
+channel = "stable"
+lld = true
+deny-warnings = false
+
+[target.i686-unknown-haiku]
+cc = "i586-pc-haiku-gcc-x86"
+cxx = "i586-pc-haiku-g++-x86"
+ar = "i586-pc-haiku-ar-x86"
+linker = "i586-pc-haiku-gcc-x86"
+rpath = false
+
+[dist]
+compression-formats = ["xz"]
